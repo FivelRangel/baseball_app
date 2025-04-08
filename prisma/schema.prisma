@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Game {
+  id            String   @id
+  homeTeamName  String
+  awayTeamName  String
+  innings       Int
+  status        String
+  currentInning Int
+  isTopInning   Boolean
+  homeScore     Int
+  awayScore     Int
+  outs          Int
+  firstBase     Boolean
+  secondBase    Boolean
+  thirdBase     Boolean
+  homeLineup    String   @db.Text
+  awayLineup    String   @db.Text
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
